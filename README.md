@@ -46,4 +46,3 @@
 - Django Rest Framework: For building RESTful APIs.
 - Other dependencies specified in `requirements.txt`.
 
-

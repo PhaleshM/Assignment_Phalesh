@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from logingestor.views import LogCreateView
 from queryinterface.views import HomeView,IndexView
 
 # Import the websocket_urlpatterns
@@ -23,9 +24,9 @@ from queryinterface.routing import websocket_urlpatterns
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("log/", include('logingestor.urls')),
+    path('', LogCreateView.as_view(), name='log-ingest'),
     path("query/", include('queryinterface.urls')),
-    path('', HomeView.as_view(), name='home'),
-    path('logs/', IndexView.as_view(), name='index'),
-    path('queryinterface/', include(websocket_urlpatterns)),
+    path('queryinterface/', HomeView.as_view(), name='home'),
+    # path('logs/', IndexView.as_view(), name='index'),
+    # path('queryinterface/', include(websocket_urlpatterns)),
 ]
